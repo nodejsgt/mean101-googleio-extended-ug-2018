@@ -7,7 +7,7 @@ import { PostService } from '../../services/post.service';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-
+  posts: any[];
   constructor(private postService: PostService) { }
 
   ngOnInit() {
@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
 
   getAllPosts(): void {
     this.postService.getAllPosts().then( result => {
-      console.log(result);
+      this.posts = result;
     })
   }
 

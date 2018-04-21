@@ -23,7 +23,10 @@ export class PostsComponent implements OnInit {
 
   getAllPostsObservable(): void {
     this.postService.getAllPostObservable()
-                    .subscribe( posts => this.posts = posts);
+                    .subscribe( 
+                      posts => this.posts = posts,
+                      error => console.log("error")
+                    );
   }
 
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import { map, tap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class PostService {
@@ -17,6 +19,15 @@ export class PostService {
                     .catch( (result) => {
                       return result;
                     })
+  };
+
+  getAllPostObservable(): Observable<any[]> {
+    return this.http.get<any[]>('/api/posts')
+                    .pipe(
+                      map( results => {
+                        return results;
+                      })
+                    )
   }
 
 }

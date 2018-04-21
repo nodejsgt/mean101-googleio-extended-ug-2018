@@ -11,13 +11,19 @@ export class PostsComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.getAllPosts();
+    // this.getAllPosts();
+    this.getAllPostsObservable();
   }
 
   getAllPosts(): void {
     this.postService.getAllPosts().then( result => {
       this.posts = result;
     })
+  }
+
+  getAllPostsObservable(): void {
+    this.postService.getAllPostObservable()
+                    .subscribe( posts => this.posts = posts);
   }
 
 }
